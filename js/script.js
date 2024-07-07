@@ -393,10 +393,12 @@ function onInput(event) {
 
 const input = document.getElementById("input-phone");
 
-input.addEventListener("input", (event) => {
+input.addEventListener("input", () => {
   const initialText = "+38";
   if (!input.value.startsWith(initialText)) {
-    input.value = initialText + input.value.slice(initialText.length);
+    input.value = initialText;
+  } else {
+    input.value = initialText + input.value.slice(initialText.length).replace(/[^0-9]/g, '');
   }
 });
 
